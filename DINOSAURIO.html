@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dinosaur Game</title>
+    <style>
+      #obstacle1, #obstacle2, #obstacle3 {
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./imagenes/bulbasaur.png" id="dinosaur" />
+    <img src="./imagenes/pilplup.webp" id="obstacle1" />
+    <img src="./imagenes/flareon.png" id="obstacle2" />
+    <img src="./imagenes/fran.png" id="obstacle3" />
+    <script>
+      var dinosaur = document.getElementById("dinosaur");
+      var obstacle1 = document.getElementById("obstacle1");
+      var obstacle2 = document.getElementById("obstacle2");
+      var obstacle3 = document.getElementById("obstacle3");
+      var obstacles = [obstacle1, obstacle2, obstacle3];
+
+      window.addEventListener("offline", function() {
+        dinosaur.style.top = "0px";
+        dinosaur.addEventListener("click", function() {
+          dinosaur.style.top = "-100px";
+        });
+
+        // move obstacles
+        var xPos = 0;
+        setInterval(function() {
+          xPos -= 5;
+          obstacles.forEach(function(obstacle) {
+            obstacle.style.left = xPos + "px";
+          });
+        }, 20);
+      });
+    </script>
+  </body>
+</html>
